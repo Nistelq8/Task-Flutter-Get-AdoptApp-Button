@@ -1,4 +1,5 @@
 import 'package:adopt_app/pages/home_page.dart';
+import 'package:adopt_app/providers/Auth_provider.dart';
 import 'package:adopt_app/providers/pets_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -6,8 +7,11 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => PetsProvider(),
+    MultiProvider(
+      providers: [
+        Provider<AuthProvider>(create: (_) => AuthProvider()),
+        Provider<PetsProvider>(create: (_) => PetsProvider()),
+      ],
       child: MyApp(),
     ),
   );

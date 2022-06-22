@@ -10,6 +10,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+          child: ListTile(
+        title: Text("Sign up"),
+        trailing: Icon(Icons.login),
+        onTap: () {
+          context.push("/signup");
+        },
+      )),
       appBar: AppBar(
         title: const Text("Pet Adopt"),
       ),

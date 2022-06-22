@@ -7,9 +7,11 @@ class AuthServices {
   Future<String> signup({required User user}) async {
     late String token;
     try {
-      Response response =
-          await dioClient.post("https://coded-pets-api-auth.herokuapp.com");
+      Response response = await dioClient.post(
+          "https://coded-pets-api-auth.herokuapp.com",
+          data: user.toJson());
       token = response.data["token"];
+      print(token);
     } on DioError catch (error) {
       print("error");
     }

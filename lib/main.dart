@@ -1,4 +1,5 @@
 import 'package:adopt_app/pages/home_page.dart';
+import 'package:adopt_app/pages/signup_page.dart';
 import 'package:adopt_app/providers/Auth_provider.dart';
 import 'package:adopt_app/providers/pets_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        Provider<AuthProvider>(create: (_) => AuthProvider()),
-        Provider<PetsProvider>(create: (_) => PetsProvider()),
+        ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
+        ChangeNotifierProvider<PetsProvider>(create: (_) => PetsProvider()),
       ],
       child: MyApp(),
     ),
@@ -33,6 +34,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: '/',
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: '/signup',
+        builder: (context, state) => SignupPage(),
       ),
     ],
   );
